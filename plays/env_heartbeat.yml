@@ -1,7 +1,9 @@
 ---
-- hosts: all
+
+- name: "Confirm SSH access on all hosts"
+  hosts: all
   gather_facts: false
   tasks:
-    - name: "Confirm SSH access on all hosts"
+    - name: "Confirm SSH access"
       ansible.builtin.command: echo "SSH access confirmed on {{ inventory_hostname }}"
       changed_when: false
