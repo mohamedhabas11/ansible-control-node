@@ -3,7 +3,7 @@
 # .github/workflows/roles-test.yml
 
 - name: "CI TEST"
-  hosts: "{{ target | default('localhost') }}"
+  hosts: "{{ target | default('localhost') | string }}"
   become: yes
   roles:
     - role: "sudo"
