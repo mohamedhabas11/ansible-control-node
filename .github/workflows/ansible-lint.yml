@@ -1,19 +1,20 @@
+---
 name: "ansible-lint"
-on:
-  push:
-    branches: 
-      - '**'
-    paths:
-      - "roles/**"
-      - "plays/**"
-  pull_request:
-    branches: 
-      - '**'
-    paths:
-      - "roles/**"
-      - "plays/**"
-  release:
-    types: [created]
+# on:
+#   push:
+#     branches: 
+#       - '**'
+#     paths:
+#       - "roles/**"
+#       - "plays/**"
+#   pull_request:
+#     branches: 
+#       - '**'
+#     paths:
+#       - "roles/**"
+#       - "plays/**"
+#   release:
+#     types: [created]
 
 # jobs:
 #   lint:
