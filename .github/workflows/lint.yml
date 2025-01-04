@@ -1,3 +1,4 @@
+---
 # .github/workflows/lint.yml
 name: "Lint Ansible Roles and Playbooks"
 
@@ -29,12 +30,11 @@ jobs:
       - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: "Run ansible-playbook --syntax-check"
+      - name: "Run Ansible Syntax Check"
         run: ansible-playbook --syntax-check plays/*.yml
 
-      - name: "Run ansible-lint roles/ plays/"
+      - name: "Run ansible-lint"
         run: ansible-lint roles/ plays/
 
       - name: "Run yamllint"
         run: yamllint roles/ plays/
-
