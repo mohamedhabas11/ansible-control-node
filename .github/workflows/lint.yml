@@ -34,7 +34,7 @@ jobs:
       #   run: ansible-playbook --syntax-check plays/*.yml
 
       - name: "Run ansible-lint"
-        run: ansible-lint roles/ plays/
+        run: ansible-lint -c .ansible-lint roles/ plays/
 
       - name: "Run yamllint"
         run: yamllint roles/ plays/
