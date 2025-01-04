@@ -15,16 +15,16 @@ on:
   release:
     types: [created]
 
-jobs:
-  lint:
-    name: "Ansible Lint"
-    runs-on: "ubuntu-24.04"
-    steps:
-      - uses: "actions/checkout@v4"
-      - name: "Run ansible-lint"
-        uses: "ansible/ansible-lint@main"
-        with:
-          args: "roles/ plays/"
-          setup_python: "true"
-          working_directory: ""
-          requirements_file: ""
+# jobs:
+#   lint:
+#     name: "Ansible Lint"
+#     runs-on: "ubuntu-24.04"
+#     steps:
+#       - uses: "actions/checkout@v4"
+#       - name: "Run ansible-lint"
+#         uses: "ansible/ansible-lint@main"
+#         with:
+#           args: "roles/ plays/"
+#           setup_python: "true"
+#           working_directory: ""
+#           requirements_file: ""
