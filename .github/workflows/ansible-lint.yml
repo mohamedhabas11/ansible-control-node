@@ -1,7 +1,13 @@
 name: "ansible-lint"
 on:
+  push:
+    branches: 
+      - '**'
   pull_request:
-    branches: ["main", "release/v*"]
+    branches: 
+      - '**'
+  release:
+    types: [created]
 
 jobs:
   lint:
