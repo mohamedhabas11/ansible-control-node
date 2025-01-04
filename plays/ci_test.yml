@@ -1,0 +1,9 @@
+---
+# list of roles to continuously test against
+# .github/workflows/roles-test.yml
+
+- name: "CI TEST"
+  hosts: "{{ target | default('localhost') }}"
+  become: yes
+  roles:
+    - role: "sudo"
