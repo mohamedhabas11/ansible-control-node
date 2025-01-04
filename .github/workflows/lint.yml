@@ -29,8 +29,12 @@ jobs:
       - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: "Run Linters"
-        run: |
-          yamllint roles/ plays/
-          ansible-lint roles/ plays/
-          ansible-playbook --syntax-check plays/*.yml
+      - name: "Run ansible-playbook --syntax-check"
+        run: ansible-playbook --syntax-check plays/*.yml
+
+      - name: "Run ansible-lint roles/ plays/"
+        run: ansible-lint roles/ plays/
+
+      - name: "Run yamllint"
+        run: yamllint roles/ plays/
+
