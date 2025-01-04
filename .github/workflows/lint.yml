@@ -1,0 +1,36 @@
+# .github/workflows/lint.yml
+name: "Lint Ansible Roles and Playbooks"
+
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - "roles/**"
+      - "plays/**"
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - "roles/**"
+      - "plays/**"
+  release:
+    types: [created]
+
+jobs:
+  lint:
+    name: "Ansible Lint and Syntax Check"
+    runs-on: ubuntu-latest
+
+    container:
+      image: boxy14/ansible-ci-base-image:0.0.5
+
+    steps:
+      - name: "Checkout Code"
+        uses: actions/checkout@v4
+
+      - name: "Run Linters"
+        run: |
+          yamllint roles/ plays/
+          ansible-lint roles/ plays/
+          ansible-playbook --syntax-check plays/*.yml
