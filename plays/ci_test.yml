@@ -1,9 +1,10 @@
 ---
+# plays/ci_test.yml
 # list of roles to continuously test against
 # .github/workflows/roles-test.yml
 
 - name: "CI TEST"
-  hosts: "localhost"
+  hosts: "{{ target |d('localhost')}}"
   become: yes
   roles:
     - role: "sudo"
