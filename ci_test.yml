@@ -4,7 +4,21 @@
 # .github/workflows/roles-test.yml
 
 - name: "CI TEST"
-  hosts: "{{ target | d('localhost')}}"
+  hosts: "{{ target | d('localhost') }}"
   become: true
+  tasks:
+    - name: "Check hostname"
+      ansible.builtin.command:
+        cmd: hostname
+      register: hostname_output
+
+    - name: "Display hostname"
+      ansible.builtin.debug:
+        msg: "Hostname: {{ hostname_output.stdout }}"
+
+    - name: "Check OS details"
+      ansible.builtin.debug:
+        msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }} ({{ ansible_architecture }})"
+
   roles:
     - role: "sudo"
