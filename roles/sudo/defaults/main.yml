@@ -1,2 +1,19 @@
+---
 ### SUDO SETTINGS
 sudo_configure: false
+
+sudo_package_name: "sudo"
+# sudo_package_version: ""
+
+sudo_config_file: "/etc/sudo.conf"
+sudo_config_opts: {}
+
+#### SUDO SUDOERS SETTINGS
+sudo_sudoers_file: "/etc/sudoers"
+sudo_sudoers_opts: {}
+sudo_sudoers_included_dir: "/etc/sudoers.d"
+sudo_sudoers_included_files: {}
+
+#### SUDO LOGSRV SETTINGS
+sudo_logsrvd_file: "/etc/sudo_logsrvd.conf"
+sudo_logsrvd_opts: {}
