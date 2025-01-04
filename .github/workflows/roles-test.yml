@@ -35,4 +35,4 @@ jobs:
           pip3 install ansible
 
       - name: Test roles with ci_test.yml
-        run: ansible-playbook ci_test.yml --connection=local --diff
+        run: ansible-playbook ci_test.yml -i localhost, --connection=local --diff

@@ -9,12 +9,14 @@ on:
     paths:
       - "roles/**"
       - "plays/**"
+      - "ci_test.yml"
   pull_request:
     branches:
       - '**'
     paths:
       - "roles/**"
       - "plays/**"
+      - "ci_test.yml"
   release:
     types: [created]
 
