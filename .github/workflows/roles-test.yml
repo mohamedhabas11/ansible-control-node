@@ -1,0 +1,38 @@
+---
+# .github/workflows/roles-test.yml
+name: "Test Ansible Roles"
+
+on:
+  workflow_run:
+    workflows: ["Lint Ansible Roles and Playbooks"]
+    types:
+      - completed
+
+jobs:
+  test-roles:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        container: ['ubuntu:22.04', 'oraclelinux:9']
+
+    container:
+      image: ${{ matrix.container }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Python & Ansible (Ubuntu)
+        if: matrix.container == 'ubuntu:22.04'
+        run: |
+          apt-get update
+          apt-get install -y python3-pip
+          pip3 install ansible
+
+      - name: Install Python & Ansible (Oracle)
+        if: matrix.container == 'oraclelinux:9'
+        run: |
+          dnf install -y python3-pip
+          pip3 install ansible
+
+      - name: Test roles with ci_test.yml
+        run: ansible-playbook ci_test.yml --connection=local --diff
