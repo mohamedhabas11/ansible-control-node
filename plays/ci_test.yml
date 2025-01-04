@@ -5,6 +5,6 @@
 
 - name: "CI TEST"
   hosts: "{{ target | d('localhost')}}"
-  become: yes
+  become: true
   roles:
     - role: "sudo"

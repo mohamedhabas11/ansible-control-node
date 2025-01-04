@@ -2,7 +2,7 @@
 - name: "Confirm SSH and sudo access on all hosts"
   hosts: all
   gather_facts: false
-  become: yes
+  become: true
   tasks:
     - name: "Confirm SSH access"
       ansible.builtin.command: echo "SSH access confirmed on {{ inventory_hostname }}"
