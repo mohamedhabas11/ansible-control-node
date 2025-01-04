@@ -1,9 +1,25 @@
 ---
 
-- name: "Confirm SSH access on all hosts"
+- name: "Confirm SSH and sudo access on all hosts"
   hosts: all
   gather_facts: false
   tasks:
     - name: "Confirm SSH access"
       ansible.builtin.command: echo "SSH access confirmed on {{ inventory_hostname }}"
       changed_when: false
+
+    - name: "Confirm sudo access"
+      ansible.builtin.command: "sudo --non-interactive true"
+      register: sudo_access
+      ignore_errors: true
+      changed_when: false
+
+    - name: "Report sudo access status"
+      ansible.builtin.debug:
+        msg: "Sudo access confirmed on {{ inventory_hostname }}"
+      when: sudo_access.rc == 0
+
+    - name: "Report missing sudo access"
+      ansible.builtin.debug:
+        msg: "No sudo access on {{ inventory_hostname }}"
+      when: sudo_access.rc != 0
