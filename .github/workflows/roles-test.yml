@@ -19,7 +19,7 @@ jobs:
       image: ${{ matrix.container }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install Python & Ansible (Ubuntu)
         if: matrix.container == 'ubuntu:22.04'
